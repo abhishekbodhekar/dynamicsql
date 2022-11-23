@@ -1,4 +1,4 @@
-module dynamicsql
+module github.com/abhishekbodhekar/dynamicsql
 
 go 1.18
 
