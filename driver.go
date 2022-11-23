@@ -23,7 +23,8 @@ type WrappedConn struct {
 	watcher   *fsnotify.Watcher
 }
 
-// Registers dynamicsql driver with sql package. Also defines underlying driver to be used i.e. passed as dri
+// Registers dynamicsql driver with sql package.
+// Also defines underlying driver to be used i.e. passed as dri
 func RegisterDriver(dri driver.Driver) {
 	for _, val := range sql.Drivers() {
 		if val == "dynamicsql" {
@@ -93,7 +94,8 @@ func (dri DynamicSQLDriver) Open(identifier string) (driver.Conn, error) {
 
 }
 
-// This is to keep a watch on file havign DSN. If the contents are changed, the new DSN is updated so that any new connection usses it
+// This is to keep a watch on file havign DSN.
+// If the contents are changed, the new DSN is updated so that any new connection use it
 func (p *WrappedConn) KeepWatching(path string) {
 	go func(path string) {
 		for {
