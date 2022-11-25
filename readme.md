@@ -9,7 +9,7 @@ Presently, it supports Postgres and MySQL databases. However, support for differ
 ## How does it work?
 
 This driver wraps around your actual driver to be used (i.e Postgres/MySQL driver). Whenever the DynamicSql driver notices that the DB password is changed, it aligns any new connection to this DB with a new set of configurations.
-fsnotify is used to watch over the file which is expected to have the latest DB dsn stored. 
+```fsnotify``` is used to watch over the file which is expected to have the latest DB dsn stored. 
 
 traditionally, opening a connection to DB is like below
 
@@ -22,9 +22,9 @@ then,
 SQL.Open("Postgres","postgres://postgres:postgres@host.com")
 ```
 
-here, the first argument to ```SQL.Open``` is the driver name (which will help the SQL package to identify which driver is to be used. We have already registered a driver with this name just above) and the second is the actual DSN.
+here, the first argument to ```SQL.Open``` is the driver name (which will help the SQL package to identify which driver is to be used. We have already registered a driver with this name just above) and the second argument is the actual DSN.
 
-Now to use DynamicSQl, check the following code
+Following snippet will guide you on using DynamicSql driver.
 
 ```go 
 package main
@@ -51,7 +51,7 @@ func main() {
 ```
 
 Here, you must register your actual driver (i.e. Postgres/MySQL) with dynamicSQl before opening any connection.
-Then while DB.Open(), the first argument must be "dynamicsql". The second argument must bbe a URI.
-The scheme should be "dynamicsql". The host can be anything. Then the path should be always the actual path of file containing the latest DSN of the DB. 
+Then while ```DB.Open()```, the first argument must be "dynamicsql". The second argument must be a URI.
+The ```scheme``` should be "dynamicsql". The ```host``` can be anything. Then the ```path``` should be always the actual path of file containing the latest DSN of the DB. 
 
 
