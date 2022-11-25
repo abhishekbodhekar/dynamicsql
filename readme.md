@@ -13,16 +13,20 @@ fsnotify is used to watch over the file which is expected to have the latest DB 
 
 traditionally, opening a connection to DB is like below
 
-```go SQL.Register("Postgres", pq.Driver{}) // the Postgres driver has to be registered with the SQL package. ```
+```go 
+SQL.Register("Postgres", pq.Driver{}) // the Postgres driver has to be registered with the SQL package. 
+```
 then,
 
-```go SQL.Open("Postgres","postgres://postgres:postgres@host.com")```
+```go 
+SQL.Open("Postgres","postgres://postgres:postgres@host.com")
+```
 
 here, the first argument to ```SQL.Open``` is the driver name (which will help the SQL package to identify which driver is to be used. We have already registered a driver with this name just above) and the second is the actual DSN.
 
 Now to use DynamicSQl, check the following code
 
-``` 
+```go 
 package main
 
 import (
