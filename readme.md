@@ -12,13 +12,11 @@ This driver wraps around your actual driver to be used (i.e Postgres/MySQL drive
 fsnotify is used to watch over the file which is expected to have the latest DB dsn stored. 
 
 traditionally, opening a connection to DB is like below
-``` SQL.Register("Postgres", pq.Driver{})```
 
-initially, the Postgres driver has to be registered with the SQL package. 
-
+```go SQL.Register("Postgres", pq.Driver{}) // the Postgres driver has to be registered with the SQL package. ```
 then,
 
-```SQL.Open("Postgres","postgres://postgres:postgres@host.com")```
+```go SQL.Open("Postgres","postgres://postgres:postgres@host.com")```
 
 here, the first argument to ```SQL.Open``` is the driver name (which will help the SQL package to identify which driver is to be used. We have already registered a driver with this name just above) and the second is the actual DSN.
 
